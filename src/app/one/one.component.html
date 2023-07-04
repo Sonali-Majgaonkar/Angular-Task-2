@@ -1,0 +1,66 @@
+<h1>Hello Sonali</h1>
+<!-- Data Binding -->
+<p [innerHTML] = "textName"></p>
+<p [innerText] = "textName2"></p>
+<p [textContent]= "textName"></p>
+<p innerHTML="{{textName + ' ' + textName2}}"></p>
+<p innerHTML="{{textName }} {{textName2}}"></p>
+
+<img [src]="imgUrl" style="width: 20vw;">
+
+<table>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td [attr.colspan]="colSpanNo">3</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+</table>
+
+<!-- String Interpolation -->
+
+<p>{{2+5}}</p>
+<p>{{textName}}</p>
+<p>{{getTextName()}}</p>
+<p>{{showText ? textName : textName2}}</p>
+
+<ul>
+    <li [innerHTML]="strArr[0]"></li>
+    <li [innerHTML]="strArr[1]"></li>
+    <li [innerHTML]="strArr[2]"></li>
+</ul>
+
+<!-- DIRECTIVE -->
+
+<!-- STRUCTURAL DIRECTIVE -->
+<ul>
+    <li *ngFor= "let ele of strArr">{{ele}}</li>
+</ul>
+<ul>
+    <li *ngFor= "let ele of strArr ; let i = index">({{i+1}}) - {{ele}}</li>
+</ul>
+
+<button *ngIf= "showBtn">Click</button>
+
+<button *ngIf= "showBtn ; else noBtn">Click</button>
+<ng-template #noBtn>
+<span>No Button Available</span>
+</ng-template>
+
+<!-- ATTRIBUTE DIRECTIVE -->
+
+<h2 [ngStyle]="{'background-color':'red','color':'green'}">EA1819</h2>
+
+<h2 [ngStyle]="{backgroundColor:bgColor}">EA1819</h2>
+
+<h2 [ngClass]="{'active' : true,'abc':true}">Sonali</h2>
+
+<!-- CUSTOM DIRECTIVE -->
+
+<input type="text" inputFormat>

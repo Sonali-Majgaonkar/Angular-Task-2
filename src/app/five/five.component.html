@@ -1,0 +1,16 @@
+<p>five works!</p>
+<form [formGroup]="formDemo" (ngSubmit)="onSubmit()">
+    <input type="file" (change)="onFileUploadEve($event)" formControlName="imgInput" class="form-control">
+    <span class="text-danger" *ngIf="!formDemo.get('imgInput').valid && formDemo.get('imgInput').touched">
+        <ng-container *ngIf="formDemo.get('imgInput').errors?.required">
+            required field
+        </ng-container>
+    </span>
+    <span *ngIf="formDemo.get('imgInput').valid && !isSizeLess">
+        size should be 100Kb
+    </span>
+    
+    <br>
+    <br>
+    <button class="btn btn-info" [disabled]="!isSizeLess">click</button>
+</form>

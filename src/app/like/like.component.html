@@ -1,0 +1,27 @@
+<h1>Like Component Works</h1>
+<i 
+class="fa fs-50"
+[ngClass]="{
+    'fa-thumbs-up': isLike,
+    'fa-thumbs-o-up' : !isLike
+}" 
+aria-hidden="true"
+(click)="likeToggle()"></i>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset3">
+        
+            <h2 class="bg-warning">{{dataFromParent | json}}</h2>
+
+            
+            <br>
+            <button class="btn btn-primary" (click)="onSendDataClick()">Send Data</button>
+            <br><br>
+            
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let ele of hobbiesArrFromParent">{{'I Love '+ele}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

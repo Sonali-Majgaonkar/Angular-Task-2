@@ -1,0 +1,46 @@
+<p>accordiant works!</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-5 bg-light p-5 mr-4 mt-5">
+            <h4 class="text-info">Add section</h4>
+
+            <form class="p-5" [formGroup]="accordianForm" (ngSubmit)="onSubmitEve()">
+                <div class="form-group">
+                    <label class="h6 text-info" for="header">Section header*</label>
+                    <input type="text" name="header" id="header" class="form-control" formControlName="heading">
+                    <span class="text-danger" *ngIf="!accordianForm.get('heading').valid && accordianForm.get('heading').touched">This field is mandatory</span>
+                </div>
+                <div class="form-group">
+                    <label class="h6 text-info" for="details">Section details*</label>
+                    <textarea name="details" id="details" cols="30" rows="5" class="form-control" formControlName="details"></textarea>
+                    <span class="text-danger" *ngIf="!accordianForm.get('details').valid && accordianForm.get('details').touched">This field is mandatory</span>
+                </div>
+                <button type="submit" class="btn btn-info btn-block mt-5">Add</button>
+            </form>
+
+        </div>
+        <div class="col-6 p-5">
+            <div class="accordion" id="accordionExample">
+                <div class="card" *ngFor="let ac of mylist ; let index = index">
+                    <div class="card-header" [id]="'header0'+(index+1)">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left myBtn" type="button" data-toggle="collapse"
+                                [attr.data-target]="'#'+'collaps'+(index+1)" aria-expanded="false" [attr.aria-controls]="'collaps'+(index+1)" (click)="onMyBtnClick($event)">
+                                <h5>{{ac.heading}}</h5>
+                                <i class="fa fa-plus"></i>
+                                <!-- <i class="fa fa-minus"></i> -->
+                            </button>
+                        </h2>
+                    </div>
+                    <div [id]="'collaps'+(index+1)" class="collapse" [attr.aria-labelledby]="'header0'+(index+1)"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            {{ac.details}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

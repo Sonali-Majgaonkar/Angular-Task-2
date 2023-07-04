@@ -1,0 +1,64 @@
+<p>assignment2-b works!</p>
+<div class="conatiner mt-5 pt-5">
+    <div class="row mt-5">
+        <div class="col-4 offset-4 bg-light mt-3 p-5">
+            <form #myForm="ngForm" (ngSubmit)="onSubmitFun()">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" ngModel id="firstName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" ngModel id="lastName" class="form-control">
+                </div>
+                <div class="radiowrapper">
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="contactVal" id="phoneNum" value="Phone" ngModel>
+                        <label class="form-check-label" for="phoneNum">Phone</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="contactVal" id="emailId" value="Email" ngModel>
+                        <label class="form-check-label" for="emailId">Email</label>
+                      </div>
+                </div>
+
+                <!-- <p>{{myForm.value.contactVal}}</p> -->
+
+                <!-- <fieldset class="form-group row">
+                    <legend class="col-form-label col-sm-4 float-sm-left pt-0">How should we contact you?</legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="contactVal" id="phoneNum"
+                                value="Phone">
+                            <label class="form-check-label" for="phoneNum">
+                                Phone
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="contactVal" id="emailId"
+                                value="Email">
+                            <label class="form-check-label" for="emailId">
+                                Email
+                            </label>
+                        </div>
+                    </div>
+                </fieldset> -->
+
+                
+                <div class="form-group mt-3 mb-0" *ngIf = "myForm.value.contactVal == 'Phone'">
+                    <label for="phoneNum">Phone Number</label>
+                    <input type="text" name="phoneNum" ngModel id="phoneNum" class="form-control">
+                </div>
+                <div class="form-group mt-3 mb-0" *ngIf = "myForm.value.contactVal == 'Email'">
+                    <label for="email">Email Id</label>
+                    <input type="text" name="email" ngModel id="email" class="form-control">
+                </div>
+
+                <button class="btn btn-info btn-block mt-5">Submit</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>

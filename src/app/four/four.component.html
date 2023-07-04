@@ -1,0 +1,20 @@
+<p>four works!</p>
+<br><br>
+
+<button (click)="btnClicked($event)" >Click Me</button><br><br>
+<input type="text" (keyup)="inputOneEve($event)"><br><br>
+<input type="text" (keyup.enter)="inputTwoEve($event)"><br><br>
+<input type="text" (keyup.enter)="inputThreeEve(inputThree.value)"#inputThree><br><br>
+<input type="text" (keyup.enter)="inputFourEve()"#inputText><br><br>
+<input type="text" (keyup)="inputFiveEve(inputFive.value)"#inputFive><br>
+<p>{{inputFiveText}}</p>
+<br>
+<input type="text" (keyup.enter)="inputSixEve()" (ngModel)="inputSix">
+<p>{{inputSix}}</p>
+<br><br>
+<!-- Banana in the box || Two way Data bindingtgu7tr8 -->
+<input type="text" [(ngModel)]="inputSeven"><br><br>
+{{inputSeven}}
+
+
+

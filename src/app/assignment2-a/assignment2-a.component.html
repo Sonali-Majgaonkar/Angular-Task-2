@@ -1,0 +1,36 @@
+<p>assignment2-a works!</p>
+
+<div class="conatiner">
+    <div class="row">
+        <div class="col-6 offset-3 bg-light p-5">
+            <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" ngModel id="firstName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" ngModel id="lastName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="contact">How should we contact you?</label>
+                    <!-- <select name="contact" id="contact" class="form-control" [(ngModel)] = 'myVal'> -->
+                    <select name="contact" id="contact" class="form-control" ngModel #myVal = "ngModel">
+                        <option value="Phone">Phone</option>
+                        <option value="Email">Email</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf = "myVal.value == 'Phone'">
+                    <label for="phoneNum">Phone Number</label>
+                    <input type="text" name="phoneNum" ngModel id="phoneNum" class="form-control">
+                </div>
+                <div class="form-group" *ngIf = "myVal.value == 'Email'">
+                    <label for="email">Email Id</label>
+                    <input type="text" name="email" ngModel id="email" class="form-control">
+                </div>
+            
+                <button class="btn btn-info btn-block mt-5">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<header>
+    <div class="row bg-secondary justify-content-end py-3 m-0">
+        <div class="col-2 btn-wrapper">
+            <button class="btn btn-danger btn-lg" (click)="onBuyBtnClick()">
+                <i class="fa fa-cart-plus mr-2"></i>
+                Add Product
+            </button>
+        </div>
+    </div>
+</header>
+<main>
+    <!-- <span class="h6 closeIcon"><i class="fa fa-times fa-2x m-4 text-dark" (click)="onCloseIcon()"  aria-hidden="true"></i></span> -->
+    <section class="section-form d-none" #closeForm>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-3 my-5 bg-light">
+                    <h4 class="mt-3 ml-4 display-4">Add Product
+                        <span class="h6 closeIcon"><button class="btn  m-4 text-dark" (click)="onCloseIcon()"><i
+                                    class="fa fa-times myBtn" aria-hidden="true"></i></button></span>
+                    </h4>
+                    <form class="p-4" [formGroup]="addProductForm">
+                        <div class="form-group">
+                            <label for="imgSrc">Image</label>
+                            <input type="file" name="ImageURL" id="imgSrc" class="form-control" formControlName="img" (change)="onImgChangeEve($event)">
+                        </div>
+                        <!-- <div>
+                            <img [src]="imgUrl" alt="" height="100px">
+                        </div> -->
+                        <div class="form-group">
+                            <label for="prdName">Product Name</label>
+                            <input type="text" name="productName" id="prdName" class="form-control" formControlName="pName">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="text" name="price" id="price" class="form-control" formControlName="price">
+                        </div>
+                        <div class="text-right mt-5">
+                            <button type="submit" class="btn btn-warning" (click)="onAddProductClick()" [disabled]="!imgSize">Add
+                                Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-product py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-4 mb-4" *ngFor="let item of productList ; let index=index" id={{index+1}}>
+                            <div class="card text-center">
+                                <img [src]="item.productImage" alt="" class="card-img-top">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">{{item.productName}}</h5>
+                                    <p>{{item.productPrice | currency: "INR"}}</p>
+                                    <hr>
+                                    <div class="quntity">
+                                        <!-- <button class="border-radius" id="minus" (click)="onBtnClick($event)"><i
+                                                class="fa fa-minus"></i></button>
+                                        <input disabled type="number" value={{quntityCount}}
+                                            class="product_quantity mx-2 border-radius" max="10">
+                                        <button class="border-radius" id="plus" (click)="onBtnClick($event)"><i
+                                                class="fa fa-plus"></i></button> -->
+                                        <app-count-controller></app-count-controller>
+                                    </div>
+                                    <button class="btn btn-primary mt-3" (click)="onAddToBagClick(index , $event)">Add to Bag</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h6 class="display-4 mb-5">Shopping Bag</h6>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Product Name</th>
+                                <th>Quntity</th>
+                                <th>Price</th>
+                                <th>Order Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let bagItem of tableBagItem ; let index = index">
+                                <td>{{(index + 1)}}</td>
+                                <td>{{bagItem.pName}}</td>
+                                <td>{{bagItem.pQuantity}}</td>
+                                <td>{{bagItem.pPrice}}</td>
+                                <td>{{bagItem.pPrice * bagItem.pQuantity}}</td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="onCancelBtnClick( index )">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

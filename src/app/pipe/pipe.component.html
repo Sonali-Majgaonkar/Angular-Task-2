@@ -1,0 +1,17 @@
+<h2>pipe works</h2>
+<p>{{graphicCardDetail.gName | uppercase | lowercase}}</p>
+<p>{{graphicCardDetail.cudaCore | number}}</p>
+<p>{{graphicCardDetail.boostClock | number:'4.2-2'}}</p> <!--  2>>min Num , 2>> max num -->
+<p>{{graphicCardDetail.price | currency:'INR'}}</p>
+<p>{{graphicCardDetail.unitsSold | number}}</p>
+<p>{{graphicCardDetail.releasedDate | date:'MMM : yy'}}</p> <!--date : 'fullDate, medium'-->
+<p>{{graphicCardDetail.gDesc | summaryCutter:'100'}}</p>
+<p>{{graphicCardDetail.contactNum | usConvert}}</p>
+
+<p>{{graphicCardDetail.myStr}}</p>
+
+<p>{{graphicCardDetail.myStr | titleCase}}</p>
+
+<input type="text" inputTitleCase>
+
+<!-- <textarea name="" id="" (blur)="onBlurInput($event)"></textarea> -->
